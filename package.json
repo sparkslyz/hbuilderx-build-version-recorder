@@ -1,0 +1,69 @@
+{
+  "name": "sparksleo-verrec",
+  "displayName": "打包版本记录器",
+  "description": "自动记录uni-app小程序打包版本信息,包括版本号、时间戳、HBuilderX版本等",
+  "version": "1.0.0",
+  "publisher": "sparksleo",
+  "engines": {
+    "HBuilderX": "^3.0.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.recordBuildVersion",
+        "title": "记录打包版本信息"
+      },
+      {
+        "command": "extension.viewBuildHistory",
+        "title": "查看打包历史"
+      }
+    ],
+    "menus": {
+      "menubar/tools": [
+        {
+          "command": "extension.recordBuildVersion",
+          "group": "z_tools"
+        },
+        {
+          "command": "extension.viewBuildHistory",
+          "group": "z_tools"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "extension.recordBuildVersion",
+          "group": "z_commands",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "extension.viewBuildHistory",
+          "group": "z_commands",
+          "when": "editorTextFocus"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "打包版本记录器",
+      "properties": {
+        "buildVersionRecorder.autoRecord": {
+          "type": "boolean",
+          "default": false,
+          "description": "是否在打包时自动记录版本信息"
+        },
+        "buildVersionRecorder.includeHBuilderXVersion": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否记录HBuilderX版本号"
+        }
+      }
+    }
+  },
+  "dependencies": {}
+}
